@@ -31,7 +31,7 @@ export default function DocumentChat() {
     formData.append("pdf", file);
 
     try {
-      const res = await fetch("http://localhost:5000/api/upload-pdf", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
@@ -69,7 +69,7 @@ export default function DocumentChat() {
     setIsTyping(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/query-doc", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/query-doc`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
